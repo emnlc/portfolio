@@ -1,9 +1,7 @@
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
-  // CarouselNext,
-  // CarouselPrevious,
+  CarouselItem
 } from "@/components/ui/carousel";
 
 import { useRef } from "react";
@@ -12,6 +10,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import Autoplay from "embla-carousel-autoplay";
 
 const Projects = () => {
+  const yardLedgerAutoPlay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
+  const coinExpoAutoPlay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
+
+  // Handler functions for mouse enter and leave
+  const yardLedgerMouseEnter = () => autoplayPlugin1.current.stop();
+  const yardLedgerMouseLeave = () => autoplayPlugin1.current.reset();
+
+  const coinExpoMouseEnter = () => autoplayPlugin2.current.stop();
+  const coinExpoMouseLeave = () => autoplayPlugin2.current.reset();
+
   const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
   return (
     <div className="py-16 container mx-auto flex flex-col gap-4 md:gap-16">
@@ -54,10 +62,10 @@ const Projects = () => {
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
             <Carousel
-              plugins={[plugin.current]}
+              plugins={[yardLedgerAutoPlay.current]}
               className="flex flex-col items-center gap-4 w-fit"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
+              onMouseEnter={yardLedgerMouseEnter}
+              onMouseLeave={yardLedgerMouseLeave}
             >
               <CarouselContent>
                 {Array.from({ length: 4 }).map((_, index) => (
@@ -132,13 +140,13 @@ const Projects = () => {
 
           <div className="flex flex-col md:flex-row-reverse gap-6 md:gap-12 items-center">
             <Carousel
-              plugins={[plugin.current]}
+              plugins={[coinExpoAutoPlay.current]}
               className="flex flex-col items-center gap-4 w-fit"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
+              onMouseEnter={coinExpoMouseEnter}
+              onMouseLeave={coinExpoMouseLeave}
             >
               <CarouselContent>
-                {Array.from({ length: 3 }).map((_, index) => (
+                {Array.from({ length: 6 }).map((_, index) => (
                   <CarouselItem key={index}>
                     <div className="">
                       <Card className="rounded-none">
