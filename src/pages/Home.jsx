@@ -1,17 +1,19 @@
 import Landing from "../components/Landing";
-import About from "../components/About";
 import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Skills from "@/components/Skills";
+import Navbar from "@/components/Navbar";
 
 function Home() {
   return (
     <>
-      <Landing />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
+      <div className="h-screen flex flex-col gap-8 max-w-xl mx-auto">
+        <Navbar />
+        <Landing />
+        <Projects />
+        <Skills />
+        <Footer />
+      </div>
     </>
   );
 }

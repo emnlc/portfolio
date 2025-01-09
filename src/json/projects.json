@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Baller Props",
+    "techstack": [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Tailwind CSS",
+      "Python",
+      "FastAPI",
+      "Firebase"
+    ],
+    "description": [
+      "Sports data reserach tool using prop lines from online sportsbooks."
+    ],
+    "img": "ballerprops/ballerprops.png",
+    "site": "https://ballerprops.web.app/",
+    "source": "https://github.com/emnlc/baller-props"
+  },
+  {
+    "id": 2,
+    "title": "Yard Ledger",
+    "techstack": [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Firebase",
+      "Tailwind CSS"
+    ],
+    "description": [
+      "Invoice processing and generation with user authentication and real-time database synchronization."
+    ],
+    "img": "yardledger/yardledger.png",
+    "site": "https://yardledger.web.app",
+    "source": "https://github.com/emnlc/yard-ledger"
+  },
+  {
+    "id": 3,
+    "title": "Coin Expo",
+    "techstack": [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Supabase",
+      "Tailwind CSS"
+    ],
+    "description": [
+      "List and track top-ranking cryptocurrencies, real-time price updates and statistical data."
+    ],
+    "img": "coinexpo/coinexpo.png",
+    "site": "https://coinexpo.vercel.app/",
+    "source": "https://github.com/emnlc/coin-expo"
+  }
+]
