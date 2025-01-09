@@ -53,7 +53,7 @@ function ProjectCard({ project }) {
                         className="bg-dark-primary bg-opacity-75 rounded-lg cursor-default shadow-inner border border-[#e5e7eb] border-opacity-15 hover:bg-dark-secondary hover:bg-opacity-15"
                       >
                         <img
-                          src={`techstack/${tech}.svg`}
+                          src={`skills/${tech}.svg`}
                           className="w-6 "
                           alt=""
                         />
