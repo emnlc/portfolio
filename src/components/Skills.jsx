@@ -22,7 +22,7 @@ function Skills() {
         {skills.map((skill, i) => (
           <div
             key={i}
-            className="flex flex-col gap-2 col-span-1 py-2 bg-dark-primary bg-opacity-50 place-items-center rounded-lg transition-all border border-[#e5e7eb] border-opacity-15 hover:bg-dark-secondary hover:bg-opacity-15"
+            className="flex flex-col gap-2 col-span-1 py-2 justify-center bg-dark-primary bg-opacity-50 place-items-center rounded-lg transition-all border border-[#e5e7eb] border-opacity-15 hover:bg-dark-secondary hover:bg-opacity-15"
           >
             <img src={`/techstack/${skill}.svg`} className="w-8" alt="" />
             <span className="text-xs">{skill}</span>
