@@ -77,5 +77,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
   background-color: #0a0a0a;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

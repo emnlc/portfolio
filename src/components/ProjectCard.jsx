@@ -8,6 +8,8 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 
+import Express from "./LanguageSVGs/Express";
+
 import {
   Tooltip,
   TooltipContent,
@@ -26,7 +28,7 @@ function ProjectCard({ project }) {
     <>
       <Card
         key={project.id}
-        className={`flex flex-col w-full px-4 py-6 bg-dark-primary bg-opacity-50 border border-[#e5e7eb] border-opacity-15`}
+        className={`flex flex-col w-full px-4 py-6 bg-white dark:bg-dark-primary bg-opacity-50 border dark:border-[#e5e7eb] border-opacity-15 dark:border-opacity-15`}
       >
         {project.img ? (
           <img
@@ -40,7 +42,7 @@ function ProjectCard({ project }) {
 
         <div className={``}>
           <CardHeader className="p-4">
-            <CardTitle className="text-xl text-white">
+            <CardTitle className="text-xl text-black dark:text-white">
               {project.title}
             </CardTitle>
             <div className="project-techstack flex flex-row gap-2 text-xs flex-wrap">
@@ -50,16 +52,23 @@ function ProjectCard({ project }) {
                     <TooltipTrigger className="">
                       <Button
                         size="icon"
-                        className="bg-dark-primary bg-opacity-75 rounded-lg cursor-default shadow-inner border border-[#e5e7eb] border-opacity-15 hover:bg-dark-secondary hover:bg-opacity-15"
+                        className="bg-white dark:bg-dark-primary bg-opacity-75 rounded-lg cursor-default shadow-inner border hover:bg-dark-secondary hover:bg-opacity-10 dark:border-[#e5e7eb] dark:border-opacity-15 dark:hover:bg-dark-secondary dark:hover:bg-opacity-15"
                       >
-                        <img
-                          src={`skills/${tech}.svg`}
-                          className="w-6 "
-                          alt=""
-                        />
+                        {tech === "Express" ? (
+                          <>
+                            <Express />
+                          </>
+                        ) : (
+                          <img
+                            id={tech}
+                            src={`skills/${tech}.svg`}
+                            className="w-6"
+                            alt=""
+                          />
+                        )}
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent className="bg-dark-primary text-white border border-[#e5e7eb] border-opacity-15">
+                    <TooltipContent className="bg-white dark:bg-dark-primary text-black dark:text-white border dark:border-[#e5e7eb] border-opacity-10 dark:border-opacity-15">
                       <p>{tech}</p>
                     </TooltipContent>
                   </Tooltip>
@@ -69,7 +78,7 @@ function ProjectCard({ project }) {
           </CardHeader>
 
           <CardContent className="p-4">
-            <div className="text-white text-sm mb-3 flex flex-col gap-4">
+            <div className="text-black dark:text-white text-sm mb-3 flex flex-col gap-4">
               {project.description.map((text, i) => (
                 <p key={i}>{text}</p>
               ))}
@@ -80,28 +89,28 @@ function ProjectCard({ project }) {
             <CardFooter className="flex flex-row justify-between p-4 min-w-full">
               <div className="flex flex-row gap-2">
                 {project.source ? (
-                  <Button
-                    className="bg-dark-primary transition-all border border-[#e5e7eb] border-opacity-15 hover:bg-dark-secondary hover:bg-opacity-15"
-                    size={"sm"}
-                  >
-                    <a target="_blank" href={project.source}>
+                  <a target="_blank" href={project.source}>
+                    <Button
+                      className="bg-white dark:bg-dark-primary transition-all border dark:border-[#e5e7eb] dark:border-opacity-15 hover:bg-dark-secondary dark:hover:bg-dark-secondary hover:bg-opacity-10 dark:hover:bg-opacity-15"
+                      size={"sm"}
+                    >
                       <FontAwesomeIcon icon={faGithub} />{" "}
                       <span>&nbsp;Source</span>
-                    </a>
-                  </Button>
+                    </Button>
+                  </a>
                 ) : (
                   <></>
                 )}
 
                 {project.site ? (
-                  <Button
-                    className="bg-white text-black hover:bg-opacity-80"
-                    size={"sm"}
-                  >
-                    <a target="_blank" href={project.site}>
+                  <a target="_blank" href={project.site}>
+                    <Button
+                      className="transition-all bg-dark-primary dark:bg-white text-white dark:text-black hover:bg-dark-secondary hover:bg-opacity-80 dark:hover:bg-opacity-80"
+                      size={"sm"}
+                    >
                       <FontAwesomeIcon icon={faGlobe} /> <span>&nbsp;View</span>
-                    </a>
-                  </Button>
+                    </Button>
+                  </a>
                 ) : (
                   <></>
                 )}

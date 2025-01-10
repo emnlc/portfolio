@@ -8,7 +8,7 @@ const Footer = () => {
       <a
         target="_blank"
         href="https://www.linkedin.com/in/emnlc/"
-        className="text-white hover:text-opacity-50 transition-all flex flex-row gap-2 items-center"
+        className="text-black hover:text-opacity-50 dark:hover:text-opacity-50 transition-all flex flex-row gap-2 items-center dark:text-white"
       >
         <FontAwesomeIcon className="w-5 h-5" icon={faLinkedin} />{" "}
         <span className="hidden sm:block">LinkedIn</span>
@@ -16,7 +16,7 @@ const Footer = () => {
       <a
         target="_blank"
         href="https://github.com/emnlc"
-        className="text-white hover:text-opacity-50 transition-all flex flex-row gap-2 items-center"
+        className="text-black hover:text-opacity-50 dark:hover:text-opacity-50 transition-all flex flex-row gap-2 items-center dark:text-white"
       >
         <FontAwesomeIcon className="w-5 h-5" icon={faEnvelope} />
         <span className="hidden sm:block">Contact</span>

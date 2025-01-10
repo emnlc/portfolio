@@ -16,7 +16,7 @@ const Projects = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-8 px-4 text-white">
+      <div className="flex flex-col items-center justify-center gap-8 px-4 text-black dark:text-white">
         <h1 className="self-start text-3xl md:text-3xl font-semibold">
           Projects
         </h1>

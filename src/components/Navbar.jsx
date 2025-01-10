@@ -1,17 +1,46 @@
+import { useState, useEffect } from "react";
+
 const Navbar = () => {
+  const [dark, setDark] = useState(() => {
+    const storedPreference = localStorage.getItem("darkMode");
+    return storedPreference === null ? true : JSON.parse(storedPreference);
+  });
+
+  useEffect(() => {
+    if (dark) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [dark]);
+
+  const darkModeHandler = () => {
+    setDark((prevDark) => {
+      const newDarkMode = !prevDark;
+      localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
+      return newDarkMode;
+    });
+  };
+
   return (
-    <>
-      <div className="w-full text-white">
-        <div className=" font-bold text-2xl items-center md:flex justify-between py-4 px-4">
-          <a
-            href="https://emnlc.com"
-            className="text-white hover:text-opacity-50 transition-all"
-          >
-            emnlc
-          </a>
-        </div>
+    <div className="w-full">
+      <div className="font-bold text-2xl items-center flex justify-between py-4 px-4">
+        <a
+          href="https://emnlc.com"
+          className="text-black dark:text-white hover:text-opacity-50 transition-all"
+        >
+          emnlc
+        </a>
+
+        <button onClick={darkModeHandler}>
+          {dark ? (
+            <img className="w-5 h-5" src="moon.svg" alt="Dark Mode" />
+          ) : (
+            <img className="w-5 h-5" src="sun.svg" alt="Light Mode" />
+          )}
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 
