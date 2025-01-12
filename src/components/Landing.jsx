@@ -66,11 +66,7 @@ function Landing() {
                   icon={faLinkedin}
                 />
               </a>
-              <a
-                className="flex "
-                target="_blank"
-                href="mailto:emnlc.dev@gmail.com"
-              >
+              <a className="flex" href="mailto:emnlc.dev@gmail.com">
                 <FontAwesomeIcon
                   className="text-2xl transition-all hover:opacity-80 dark:hover:text-opacity-50"
                   icon={faEnvelope}

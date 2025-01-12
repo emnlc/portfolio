@@ -7,10 +7,20 @@ const Navbar = () => {
   });
 
   useEffect(() => {
+    const themeColorMetaTag = document.querySelector(
+      'meta[name="theme-color"]'
+    );
+
     if (dark) {
-      document.body.classList.add("dark");
+      document.documentElement.classList.add("dark");
+      if (themeColorMetaTag) {
+        themeColorMetaTag.setAttribute("content", "#0a0a0a");
+      }
     } else {
-      document.body.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
+      if (themeColorMetaTag) {
+        themeColorMetaTag.setAttribute("content", "#ffffff");
+      }
     }
   }, [dark]);
 

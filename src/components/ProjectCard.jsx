@@ -51,7 +51,7 @@ function ProjectCard({ project }) {
         transition={{ duration: 0.25, delay: 0.2 }}
       >
         <Card
-          className={`flex flex-col rounded-xl w-full px-4 py-6 bg-white dark:bg-dark-primary bg-opacity-50 border dark:border-[#e5e7eb] border-opacity-15 dark:border-opacity-15`}
+          className={`flex flex-col rounded-lg w-full px-4 py-6 bg-white dark:bg-dark-primary bg-opacity-50 border dark:border-[#e5e7eb] border-opacity-15 dark:border-opacity-15`}
         >
           {project.img ? (
             <img

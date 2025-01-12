@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-// TODO: create nice looking weather widget :)
-
 const getGradientBackground = (data) => {
   const isDay = data.current.is_day === 1;
   const condition = data.current.condition.text.toLowerCase();
@@ -61,7 +59,7 @@ function WeatherWidget() {
     queryKey: ["current"],
     queryFn: () => {
       return fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${token}&q=phoenix`
+        `https://api.weatherapi.com/v1/current.json?key=${token}&q=phoenix`
       ).then((res) => res.json());
     },
   });

@@ -14,8 +14,7 @@ const Footer = () => {
         <span className="hidden sm:block">LinkedIn</span>
       </a>
       <a
-        target="_blank"
-        href="https://github.com/emnlc"
+        href="mailto:emnlc.dev@gmail.com"
         className="text-black hover:text-opacity-50 dark:hover:text-opacity-50 transition-all flex flex-row gap-2 items-center dark:text-white"
       >
         <FontAwesomeIcon className="w-5 h-5" icon={faEnvelope} />
