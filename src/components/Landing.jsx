@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import WeatherWidget from "./WeatherWidget/WeatherWidget";
+import SpotifyWidget from "./SpotifyWidget/SpotifyWidget";
 
 function Landing() {
   const ref = useRef(null);
@@ -37,9 +38,9 @@ function Landing() {
         initial="hidden"
         animate={mainControls}
         transition={{ duration: 0.2, delay: 0.2 }}
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-8 px-4"
       >
-        <div className="flex gap-4 h-auto flex-row justify-start items-center px-4 text-black dark:text-white">
+        <div className="flex gap-4 h-auto flex-row justify-start items-center text-black dark:text-white">
           {/* IMAGE CODE */}
           <div className="landing-image-container">
             <img
@@ -54,7 +55,7 @@ function Landing() {
             <h1 className="text-xl sm:text-2xl font-bold">
               Hey, I&#39;m Emmanuel 👋
             </h1>
-            <h2 className="text-lg">Full Stack Developer</h2>
+            <h2 className="text-lg">Software Developer</h2>
             <div className="flex flex-row justify-start items-center gap-2 mt-2">
               <a
                 className="flex "
@@ -94,9 +95,9 @@ function Landing() {
           </div>
         </div>
 
-        <div className="flex gap-4 h-auto flex-col items-start justify-start px-4 text-black dark:text-white">
+        <div className="flex h-auto flex-col gap-2 sm:flex-row items-center justify-start text-black dark:text-white">
           <span className="text-sm sm:text-base font-normal">
-            React developer from{" "}
+            Web developer from{" "}
             <TooltipProvider>
               <Tooltip delayDuration={100}>
                 <TooltipTrigger className="font-bold">
@@ -109,6 +110,7 @@ function Landing() {
             </TooltipProvider>{" "}
             focused on creating full-stack web applications.
           </span>
+          <SpotifyWidget />
         </div>
       </motion.div>
     </>
