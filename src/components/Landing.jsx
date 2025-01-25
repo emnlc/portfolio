@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import Resume from "/Resume.pdf";
+
 import { motion, useInView, useAnimation } from "framer-motion";
 
 import { Button } from "./ui/button";
@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/tooltip";
 
 import WeatherWidget from "./WeatherWidget/WeatherWidget";
-import SpotifyWidget from "./SpotifyWidget/SpotifyWidget";
 
 function Landing() {
   const ref = useRef(null);
@@ -87,7 +86,10 @@ function Landing() {
                 size="sm"
                 className="text-xs bg-white px-6 py-4 rounded-lg transition-all text-center border hover:bg-dark-secondary dark:hover:bg-dark-secondary hover:bg-opacity-10 dark:hover:bg-opacity-15 dark:bg-dark-primary dark:hover:text-opacity-50 dark:border-[#e5e7eb] dark:border-opacity-15"
               >
-                <a rel="noreffer" href={Resume} target="_blank">
+                <a
+                  href="https://docs.google.com/document/d/1gURfTHG063lBRAeCdrMhfqb9LMIomemiQNVlgtqDIaw/edit?usp=sharing"
+                  target="_blank"
+                >
                   Resume
                 </a>
               </Button>
@@ -110,7 +112,6 @@ function Landing() {
             </TooltipProvider>{" "}
             focused on creating full-stack web applications.
           </span>
-          <SpotifyWidget />
         </div>
       </motion.div>
     </>

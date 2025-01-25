@@ -5,17 +5,16 @@
     "techstack": [
       "React.js",
       "TypeScript",
-      "Node.js",
       "Tailwind CSS",
+      "Supabase",
       "Python",
-      "FastAPI",
-      "Firebase"
+      "FastAPI"
     ],
     "description": [
       "Sports data reserach tool using prop lines from online sportsbooks."
     ],
     "img": "ballerprops/ballerprops.png",
-    "site": "https://ballerprops.web.app/",
+    "site": "https://ballerprops.com/",
     "source": "https://github.com/emnlc/baller-props"
   },
   {
