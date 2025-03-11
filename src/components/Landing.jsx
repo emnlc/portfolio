@@ -52,7 +52,16 @@ function Landing() {
           {/* IMAGE TEXT */}
           <div className="landing-text-container flex flex-col justify-center items-start text-black dark:text-white">
             <h1 className="text-xl sm:text-2xl font-bold">
-              Hey, I&#39;m Emmanuel 👋
+              Hey, I&#39;m Emmanuel{" "}
+              <motion.span
+                style={{ display: "inline-block" }}
+                whileHover={{
+                  rotate: [0, -10, 10, -10, 10, 0],
+                  transition: { duration: 1.5 },
+                }}
+              >
+                👋
+              </motion.span>
             </h1>
             <h2 className="text-lg">Software Developer</h2>
             <div className="flex flex-row justify-start items-center gap-2 mt-2">
@@ -84,12 +93,10 @@ function Landing() {
               </a>
               <Button
                 size="sm"
+                asChild
                 className="text-xs bg-white px-6 py-4 rounded-lg transition-all text-center border hover:bg-dark-secondary dark:hover:bg-dark-secondary hover:bg-opacity-10 dark:hover:bg-opacity-15 dark:bg-dark-primary dark:hover:text-opacity-50 dark:border-[#e5e7eb] dark:border-opacity-15"
               >
-                <a
-                  href="https://docs.google.com/document/d/1gURfTHG063lBRAeCdrMhfqb9LMIomemiQNVlgtqDIaw/edit?usp=sharing"
-                  target="_blank"
-                >
+                <a href="https://resume.emnlc.com" target="_blank">
                   Resume
                 </a>
               </Button>

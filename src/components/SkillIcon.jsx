@@ -14,7 +14,7 @@ function SkillIcon({ skill }) {
       {/* Image animation controlled by state */}
       <motion.img
         src={`/skills/${skill}.svg`}
-        className="w-8"
+        className="w-8 h-full"
         alt={skill}
         animate={isHovered ? { y: -3 } : { y: 0 }}
         transition={{

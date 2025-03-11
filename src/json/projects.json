@@ -11,7 +11,7 @@
       "FastAPI"
     ],
     "description": [
-      "Sports data reserach tool using prop lines from online sportsbooks."
+      "Sports data research tool using prop lines from online sportsbooks."
     ],
     "img": "ballerprops/ballerprops.png",
     "site": "https://ballerprops.com/",
@@ -19,6 +19,24 @@
   },
   {
     "id": 2,
+    "title": "Coin Expo",
+    "techstack": [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Supabase",
+      "Tailwind CSS"
+    ],
+    "description": [
+      "List and track top-ranking cryptocurrencies, real-time price updates, and statistical data."
+    ],
+    "img": "coinexpo/coinexpo.png",
+    "site": "https://coinexpo.vercel.app/",
+    "source": "https://github.com/emnlc/coin-expo"
+  },
+  {
+    "id": 3,
     "title": "Yard Ledger",
     "techstack": [
       "React.js",
@@ -33,23 +51,5 @@
     "img": "yardledger/yardledger.png",
     "site": "https://yardledger.web.app",
     "source": "https://github.com/emnlc/yard-ledger"
-  },
-  {
-    "id": 3,
-    "title": "Coin Expo",
-    "techstack": [
-      "React.js",
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "Supabase",
-      "Tailwind CSS"
-    ],
-    "description": [
-      "List and track top-ranking cryptocurrencies, real-time price updates and statistical data."
-    ],
-    "img": "coinexpo/coinexpo.png",
-    "site": "https://coinexpo.vercel.app/",
-    "source": "https://github.com/emnlc/coin-expo"
   }
 ]

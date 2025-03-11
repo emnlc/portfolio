@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { BounceLoader } from "react-spinners";
 
 const getGradientBackground = (data) => {
   const isDay = data.current.is_day === 1;
@@ -67,13 +68,17 @@ function WeatherWidget() {
   if (isLoading)
     return (
       <>
-        <div className="text-white  bg-white dark:bg-dark-primary flex flex-row justify-center max-w-72 items-center py-2 rounded-lg relative">
+        <div className="text-white bg-white dark:bg-dark-primary flex flex-row justify-center max-w-72 items-center py-2 rounded-lg relative">
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-row gap items-center">
-              <span className="font-semibold text-xl">...</span>
+              <span className="flex justify-center items-center font-semibold h-12 text-xl">
+                <BounceLoader size={30} color="#9FE2BF	" />
+              </span>
             </div>
 
-            <span className="font-normal text-sm">...</span>
+            <span className="font-normal text-sm">
+              <br />
+            </span>
           </div>
 
           <span className="absolute top-2 right-2 self-end text-[0.65rem] font-medium text-black dark:text-white bg-white dark:bg-dark-primary px-2 py-1 rounded-lg">
@@ -102,7 +107,7 @@ function WeatherWidget() {
             {Math.round(data.current.temp_f)}&deg;
           </span>
           <img
-            className="w-12 "
+            className="w-12 h-12"
             src={
               data.current.is_day === 0
                 ? `/weather/night/${data.current.condition.text}.svg`

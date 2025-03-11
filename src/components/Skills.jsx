@@ -57,7 +57,7 @@ function Skills() {
         initial="hidden"
         animate={containerControls}
         transition={{ duration: 0.25, delay: 0.2 }}
-        className="px-4 text-black dark:text-white grid grid-cols-2 sm:grid-cols-3 grid-rows-2 gap-4"
+        className="px-4 text-black dark:text-white grid grid-cols-3 sm:grid-cols-4 grid-rows-2 gap-2"
       >
         {skills.map((skill, i) => (
           <SkillIcon key={i} skill={skill} />
