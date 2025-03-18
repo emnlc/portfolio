@@ -8,7 +8,7 @@ import Education from "@/components/Education";
 function Home() {
   return (
     <>
-      <div className="min-h-screen flex flex-col gap-8 max-w-xl mx-auto">
+      <div className="min-h-screen bg-white dark:bg-dark-primary flex flex-col gap-8 max-w-xl mx-auto">
         <Navbar />
         <Landing />
         <Education />

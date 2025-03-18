@@ -43,11 +43,22 @@ const Navbar = () => {
         </a>
 
         <button onClick={darkModeHandler}>
-          {dark ? (
-            <img className="w-5 h-5" src="moon.svg" alt="Dark Mode" />
-          ) : (
-            <img className="w-5 h-5" src="sun.svg" alt="Light Mode" />
-          )}
+          <div className="relative w-6 h-6">
+            <img
+              className={`absolute w-5 h-5 transition-opacity duration-300 ease-in-out ${
+                dark ? "opacity-100" : "opacity-0"
+              }`}
+              src="moon.svg"
+              alt="Dark Mode"
+            />
+            <img
+              className={`absolute w-5 h-5 transition-opacity duration-300 ease-in-out ${
+                dark ? "opacity-0" : "opacity-100"
+              }`}
+              src="sun.svg"
+              alt="Light Mode"
+            />
+          </div>
         </button>
       </div>
     </div>
