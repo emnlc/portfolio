@@ -129,12 +129,7 @@ const StarField = () => {
     };
   }, [isDarkMode]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-screen pointer-events-none -z-10"
-    />
-  );
+  return <canvas ref={canvasRef} className="w-full h-full" />;
 };
 
 export default StarField;

@@ -1,14 +1,28 @@
-[
-  "TypeScript",
-  "React.js",
-  "Node.js",
-  "Tailwind CSS",
-  "Python",
-  "FastAPI",
-  "Firebase",
-  "Supabase",
-  "Docker",
-  "Git",
-  "HTML",
-  "CSS"
-]
+{
+  "Frontend": [
+    "React.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "daisyUI",
+    "shadcn/ui",
+    "Motion",
+    "TanStack Query",
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "Backend": ["Bun", "Hono", "Node.js", "Python", "FastAPI", "Express"],
+  "Database": ["Supabase", "Firebase", "PostgreSQL"],
+  "Tools & Others": [
+    "Git",
+    "GitHub",
+    "Docker",
+    "Figma",
+    "Bash",
+    "Postman",
+    "Vite",
+    "VS Code",
+    "Vercel",
+    "Cloudflare"
+  ]
+}

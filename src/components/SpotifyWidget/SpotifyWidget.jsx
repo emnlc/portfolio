@@ -1,165 +1,113 @@
-import { useQuery } from "@tanstack/react-query";
-import Lottie from "lottie-react";
-import bear from "../../assets/bear.json";
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { useRef, useState } from "react";
+import { Music, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const fetchSpotifyToken = async () => {
-  const response = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Basic ${btoa(
-        `${import.meta.env.VITE_SPOTIFY_CLIENT}:${
-          import.meta.env.VITE_SPOTIFY_SECRET
-        }`
-      )}`,
-    },
-    body: new URLSearchParams({
-      grant_type: "refresh_token",
-      refresh_token: import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN,
-    }),
-  });
+import { useSpotifyNowPlaying } from "@/api/spotify";
 
-  const data = await response.json();
-  return data.access_token;
-};
-
-const fetchNowPlaying = async (token) => {
-  const response = await fetch(
-    "https://api.spotify.com/v1/me/player/currently-playing",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  if (response.status === 204 || response.status > 400) {
-    return null;
-  }
-  return response.json();
-};
-
-const useSpotifyNowPlaying = () => {
-  const { data: token } = useQuery({
-    queryKey: ["spotifyToken"],
-    queryFn: fetchSpotifyToken,
-    staleTime: 3600 * 1000,
-  });
-
-  return useQuery({
-    queryKey: ["nowPlaying", token],
-    queryFn: () => fetchNowPlaying(token),
-    enabled: !!token,
-    refetchInterval: 5000,
-  });
-};
-
-const SpotifyNowPlaying = () => {
+const SpotifyWidget = () => {
   const { data, isLoading, error } = useSpotifyNowPlaying();
-  const [isTitleOverflowing, setIsTitleOverflowing] = useState(false);
-  const [isArtistOverflowing, setIsArtistOverflowing] = useState(false);
-
+  const [isExpanded, setIsExpanded] = useState(false);
   const titleRef = useRef(null);
-  const artistRef = useRef(null);
-  const isInViewRef = useRef(null);
-  const isInView = useInView(isInViewRef, { once: true });
-  const mainControls = useAnimation();
+  const containerRef = useRef(null);
 
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-  }, [isInView, mainControls]);
+  // hide if error or loading
+  if (isLoading || error) return null;
 
-  useEffect(() => {
-    if (titleRef.current) {
-      setIsTitleOverflowing(
-        titleRef.current.scrollWidth >
-          document.querySelector("#song-container").clientWidth
-      );
-    }
+  const isPlaying = data && data.is_playing && data.item;
 
-    if (artistRef.current) {
-      setIsArtistOverflowing(
-        document.querySelector("#artist-span").clientWidth >
-          document.querySelector("#song-container").clientWidth
-      );
-    }
-  }, [data]);
-
-  if (isLoading)
-    return (
-      <motion.div
-        ref={isInViewRef}
-        variants={{
-          hidden: { opacity: 0, y: -25 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.2, delay: 0.5 }}
-        className="rounded-lg sm:max-w-[15rem] bg-white dark:bg-dark-primary bg-opacity-50 border dark:border-[#e5e7eb] border-opacity-15 dark:border-opacity-15 min-h-[74px]"
-      />
-    );
-
-  if (error) return <div>Error: {error.message}</div>;
+  // hide if nothing is playing
+  if (!isPlaying) return null;
 
   return (
-    <motion.div
-      ref={isInViewRef}
-      variants={{
-        hidden: { opacity: 0, y: -25 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      initial="hidden"
-      animate={mainControls}
-      transition={{ duration: 0.2, delay: 0.2 }}
-      className=" rounded-lg w-full sm:min-w-[13.85rem] sm:max-w-[13.85rem] bg-white dark:bg-dark-primary bg-opacity-50 border dark:border-[#e5e7eb] border-opacity-15 dark:border-opacity-15 whitespace-nowrap overflow-hidden"
-    >
-      {data && data.is_playing && data.item ? (
-        <div className="px-2 py-2 flex flex-row items-center gap-2 sm:gap-4 relative">
+    <div className="fixed bottom-4 right-4 z-50">
+      {/* Desktop */}
+      <div className="hidden sm:block border border-black/20 dark:border-white/20 bg-white dark:bg-dark-primary p-3 shadow-lg w-72">
+        <div className="flex items-center gap-3">
+          {/* Album Art */}
           <img
-            src={data.item.album.images[0]?.url}
-            className="rounded w-[60px] sm:w-[65px]"
+            src={
+              data.item.album.images[2]?.url || data.item.album.images[0]?.url
+            }
+            className="w-12 h-12 object-cover flex-shrink-0"
             alt="Album Art"
           />
-          <div
-            id="song-container"
-            className="flex flex-col overflow-hidden whitespace-nowrap relative w-full"
-          >
-            <span
-              ref={titleRef}
-              className={`font-medium text-sm song-name inline-block w-fit ${
-                isTitleOverflowing ? "animate" : ""
-              }`}
-            >
-              {data.item.name}
-            </span>
 
-            <span
-              ref={artistRef}
-              id="artist-span"
-              className={`font-medium text-xs song-artist inline-block w-fit ${
-                isArtistOverflowing ? "animate" : ""
-              }`}
-            >
+          {/* Song Info */}
+          <div
+            ref={containerRef}
+            className="flex-1 flex flex-col gap-[.125rem] min-w-0"
+          >
+            <div className="overflow-hidden">
+              <p
+                ref={titleRef}
+                className="text-sm font-light text-black dark:text-white truncate"
+              >
+                {data.item.name}
+              </p>
+            </div>
+            <p className="text-xs font-light text-black/70 dark:text-white/70 truncate">
               {data.item.artists.map((artist) => artist.name).join(", ")}
-            </span>
+            </p>
+          </div>
+
+          {/* Spotify indicator */}
+          <div className="flex-shrink-0">
+            <Music className="w-4 h-4 text-black/40 dark:text-white/40" />
           </div>
         </div>
-      ) : (
-        <div className="px-2 py-2 sm:max-w-[15rem] flex flex-row items-center gap-2 sm:gap-4">
-          <div className="w-[60px] sm:w-[65px]">
-            <Lottie animationData={bear} />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-medium text-sm">No music playing. . .</span>
-          </div>
-        </div>
-      )}
-    </motion.div>
+      </div>
+
+      {/* Mobile */}
+      <div className="sm:hidden">
+        {/* Toggle Button */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-10 h-10 border border-black/20 dark:border-white/20 bg-white dark:bg-dark-primary flex items-center justify-center shadow-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+        >
+          {isExpanded ? (
+            <X className="w-4 h-4 text-black dark:text-white" />
+          ) : (
+            <Music className="w-4 h-4 text-black dark:text-white" />
+          )}
+        </button>
+
+        {/* Panel */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="absolute bottom-12 right-0 border border-black/20 dark:border-white/20 bg-white dark:bg-dark-primary p-3 shadow-lg w-64"
+            >
+              <div className="flex items-center gap-3">
+                {/* Album Art */}
+                <img
+                  src={
+                    data.item.album.images[2]?.url ||
+                    data.item.album.images[0]?.url
+                  }
+                  className="w-12 h-12 object-cover flex-shrink-0"
+                  alt="Album Art"
+                />
+
+                {/* Song Info */}
+                <div className="flex-1 flex flex-col gap-[.125rem] min-w-0">
+                  <p className="text-sm font-light text-black dark:text-white truncate">
+                    {data.item.name}
+                  </p>
+                  <p className="text-xs font-light text-black/70 dark:text-white/70 truncate">
+                    {data.item.artists.map((artist) => artist.name).join(", ")}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
   );
 };
 
-export default SpotifyNowPlaying;
+export default SpotifyWidget;

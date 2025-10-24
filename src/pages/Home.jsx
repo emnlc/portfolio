@@ -1,21 +1,19 @@
-import Landing from "../components/Landing";
-import Projects from "@/components/Projects";
-import Footer from "@/components/Footer";
-import Skills from "@/components/Skills";
-import Navbar from "@/components/Navbar";
-import Education from "@/components/Education";
+import Landing from "@/components/Landing/Landing";
+import FeaturedProjects from "@/components/Landing/FeaturedProjects/FeaturedProjects";
+import Skills from "@/components/Landing/Skills/Skills";
+import Education from "@/components/Landing/Education";
+import SpotifyNowPlaying from "@/components/SpotifyWidget/SpotifyWidget";
 
 function Home() {
   return (
     <>
-      <div className="min-h-screen bg-white dark:bg-dark-primary flex flex-col gap-8 max-w-xl mx-auto">
-        <Navbar />
+      <div className="min-h-screen bg-white dark:bg-dark-primary flex flex-col gap-8">
         <Landing />
         <Education />
-        <Projects />
+        <FeaturedProjects />
         <Skills />
-        <Footer />
       </div>
+      <SpotifyNowPlaying />
     </>
   );
 }

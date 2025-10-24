@@ -92,3 +92,7 @@
     left: 100%;
   }
 }
+
+html {
+  scrollbar-gutter: stable;
+}

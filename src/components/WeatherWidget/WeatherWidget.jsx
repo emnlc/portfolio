@@ -1,39 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { BounceLoader } from "react-spinners";
-
-const getGradientBackground = (data) => {
-  const isDay = data.current.is_day === 1;
-  const condition = data.current.condition.text.toLowerCase();
-
-  // night
-  if (!isDay) {
-    if (condition.includes("rain")) {
-      return "linear-gradient(to bottom, #2c3e50, #34495e)"; // Night rain
-    }
-    if (condition.includes("clear")) {
-      return "linear-gradient(to bottom, #1b2838, #2c3e50)"; // Clear night
-    }
-    if (condition.includes("cloudy") || condition.includes("overcast")) {
-      return "linear-gradient(to bottom, #3a3d40, #474b4f)"; // Cloudy night
-    }
-
-    return "linear-gradient(to bottom, #1b2838, #2c3e50)";
-  }
-
-  // day
-  if (condition.includes("rainy")) {
-    return "linear-gradient(to bottom, #5f9ea0, #7b7d7d)"; // Rainy day
-  }
-  if (condition.includes("clear")) {
-    return "linear-gradient(to bottom, #4682B4, #87CEEB)"; // Clear day
-  }
-  if (condition.includes("cloudy") || condition.includes("overcast")) {
-    return "linear-gradient(to bottom, #d3d3d3, #a9a9a9)"; // Cloudy day
-  }
-
-  return "linear-gradient(to bottom, #4682B4, #87CEEB)";
-};
+import { useWeatherData } from "@/api/weatherapi";
 
 function WeatherWidget() {
   const getPhoenixTime = () => {
@@ -55,77 +22,70 @@ function WeatherWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  const token = import.meta.env.VITE_WEATHER_API_KEY;
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["current"],
-    queryFn: () => {
-      return fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${token}&q=phoenix`
-      ).then((res) => res.json());
-    },
-  });
+  const { isLoading, error, data } = useQuery(useWeatherData());
 
   if (isLoading)
     return (
-      <>
-        <div className="text-white bg-white dark:bg-dark-primary flex flex-row justify-center max-w-72 items-center py-2 rounded-lg relative">
-          <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-row gap items-center">
-              <span className="flex justify-center items-center font-semibold h-12 text-xl">
-                <BounceLoader size={30} color="#9FE2BF	" />
-              </span>
-            </div>
+      <div className="bg-white dark:bg-dark-primary border border-black/20 dark:border-white/20 p-4 min-w-[200px] rounded-none">
+        <div className="flex items-center justify-center">
+          <div className="w-2 h-2 bg-black dark:bg-white rounded-full animate-pulse" />
+        </div>
+      </div>
+    );
 
-            <span className="font-normal text-sm">
-              <br />
-            </span>
+  if (error)
+    return (
+      <div className="bg-white dark:bg-dark-primary border border-black/20 dark:border-white/20 p-4 rounded-none">
+        <span className="text-xs font-light text-black/50 dark:text-white/50">
+          Weather unavailable
+        </span>
+      </div>
+    );
+
+  if (!data)
+    return (
+      <div className="bg-white dark:bg-dark-primary border border-black/20 dark:border-white/20 p-4 rounded-none">
+        <span className="text-xs font-light text-black/50 dark:text-white/50">
+          No data
+        </span>
+      </div>
+    );
+
+  return (
+    <div className="bg-white dark:bg-dark-primary border border-black/20 dark:border-white/20 p-4 min-w-[200px] rounded-none">
+      <div className="flex items-center justify-between gap-4">
+        {/* Left side */}
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0">
+            <img
+              className="w-12 h-12 object-contain"
+              src={
+                data.current.is_day === 0
+                  ? `/weather/night/${data.current.condition.text}.svg`
+                  : `/weather/day/${data.current.condition.text}.svg`
+              }
+              alt={data.current.condition.text}
+            />
           </div>
 
-          <span className="absolute top-2 right-2 self-end text-[0.65rem] font-medium text-black dark:text-white bg-white dark:bg-dark-primary px-2 py-1 rounded-lg">
+          <div>
+            <div className="text-2xl font-light text-black dark:text-white">
+              {Math.round(data.current.temp_f)}°
+            </div>
+            <div className="text-xs font-light text-black/70 dark:text-white/70">
+              {data.current.condition.text}
+            </div>
+          </div>
+        </div>
+
+        {/* Right side */}
+        <div className="flex-shrink-0">
+          <span className="text-[0.65rem] font-light text-black/50 dark:text-white/50 border border-black/10 dark:border-white/10 px-2 py-1">
             {currentTime}
           </span>
         </div>
-      </>
-    );
-
-  if (error) return <span>Error: {error.message}</span>;
-  if (!data) return <span>No data</span>;
-
-  const backgroundStyle = {
-    background: getGradientBackground(data),
-    display: "flex",
-  };
-
-  return (
-    <span
-      style={backgroundStyle}
-      className="text-white flex flex-row justify-center max-w-72 items-center py-2 relative"
-    >
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-row gap items-center">
-          <span className="font-semibold text-xl">
-            {Math.round(data.current.temp_f)}&deg;
-          </span>
-          <img
-            className="w-12 h-12"
-            src={
-              data.current.is_day === 0
-                ? `/weather/night/${data.current.condition.text}.svg`
-                : `/weather/day/${data.current.condition.text}.svg`
-            }
-            alt=""
-          />
-        </div>
-
-        <span className="font-normal text-sm">
-          {data.current.condition.text}
-        </span>
       </div>
-
-      <span className="absolute top-2 right-2 self-end text-[0.65rem] font-medium  border dark:border-[#e5e7eb] border-opacity-15 dark:border-opacity-15 text-black dark:text-white bg-white dark:bg-dark-primary px-2 py-1 rounded-lg">
-        {currentTime}
-      </span>
-    </span>
+    </div>
   );
 }
 
