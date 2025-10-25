@@ -73,6 +73,14 @@
   },
   {
     "id": 5,
+    "title": "Portfolio",
+    "techstack": ["React.js", "JavaScript", "Node.js", "Tailwind CSS"],
+    "description": ["You're on it right now :)"],
+    "site": "https://emnlc.com",
+    "source": "https://github.com/emnlc/portfolio"
+  },
+  {
+    "id": 6,
     "title": "Ramen Games",
     "techstack": ["Python", "Docker"],
     "description": ["Discord bot to manage game servers onto my home server."],

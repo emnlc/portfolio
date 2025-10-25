@@ -5,8 +5,8 @@ function Projects() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8 ">
       <div className="grid grid-cols-1 gap-6">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
     </div>

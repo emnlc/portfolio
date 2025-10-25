@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { ExternalLink, Github } from "lucide-react";
+import ServerStatus from "./ServerStatus";
 
 function ProjectCard({ project, index }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -42,6 +43,8 @@ function ProjectCard({ project, index }) {
 
   // color when hovered/clicked
   const showColor = isHovered || isColored;
+
+  const isRamenGames = project.title.toLowerCase().includes("ramen");
 
   return (
     <motion.div
@@ -145,6 +148,17 @@ function ProjectCard({ project, index }) {
                       </p>
                     ))}
                   </motion.div>
+
+                  {isRamenGames && (
+                    <motion.div
+                      initial={{ y: -10 }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.17 }}
+                      className="mb-4"
+                    >
+                      <ServerStatus />
+                    </motion.div>
+                  )}
 
                   {/* Links */}
                   {(project.source || project.site) && (
