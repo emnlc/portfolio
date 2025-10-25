@@ -3,12 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { motion, useInView, useAnimation } from "framer-motion";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import WeatherWidget from "../WeatherWidget/WeatherWidget";
 
 function Landing() {
@@ -39,14 +33,14 @@ function Landing() {
         {/* Picture */}
         <img
           src="portfolio.jpg"
-          className="w-20 sm:w-28 h-20 sm:h-28 rounded-full object-cover border border-black/20 dark:border-white/20 flex-shrink-0"
+          className="w-20 sm:w-28 h-20 sm:h-28 rounded-full object-cover border border-base-content/20 shrink-0"
           alt="Emmanuel"
         />
 
         {/* Info */}
         <div className="flex-1 flex flex-col gap-3 pt-1">
           <div>
-            <h1 className="text-xl sm:text-2xl font-medium text-black dark:text-white tracking-tight mb-1">
+            <h1 className="text-xl sm:text-2xl font-medium text-base-content tracking-tight mb-1">
               Hey, I&#39;m Emmanuel{" "}
               <motion.span
                 style={{ display: "inline-block" }}
@@ -59,7 +53,7 @@ function Landing() {
                 👋
               </motion.span>
             </h1>
-            <p className="text-base font-light text-black/70 dark:text-white/70">
+            <p className="text-base font-light text-base-content/70">
               Software Developer
             </p>
           </div>
@@ -70,35 +64,35 @@ function Landing() {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.linkedin.com/in/emnlc"
-              className="text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors"
+              className="text-base-content hover:text-base-content/60 transition-colors"
               aria-label="LinkedIn"
             >
-              <FontAwesomeIcon className="w-5 h-5" icon={faLinkedin} />
+              <FontAwesomeIcon className="text-xl" icon={faLinkedin} />
             </a>
             <a
               href="mailto:emnlc.dev@gmail.com"
-              className="text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors"
+              className="text-base-content hover:text-base-content/60 transition-colors"
               aria-label="Email"
             >
-              <FontAwesomeIcon className="w-5 h-5" icon={faEnvelope} />
+              <FontAwesomeIcon className="text-xl" icon={faEnvelope} />
             </a>
             <a
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.github.com/emnlc"
-              className="text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors"
+              className="text-base-content hover:text-base-content/60 transition-colors"
               aria-label="GitHub"
             >
-              <FontAwesomeIcon className="w-5 h-5" icon={faGithub} />
+              <FontAwesomeIcon className="text-xl" icon={faGithub} />
             </a>
 
-            <div className="w-px h-5 bg-black/20 dark:bg-white/20" />
+            <div className="w-px h-5 bg-base-content/20" />
 
             <a
               href="https://resume.emnlc.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-light text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors border-b border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60"
+              className="text-sm font-light text-base-content hover:text-base-content/60 transition-colors border-b border-base-content/20 hover:border-base-content/60"
             >
               Resume
             </a>
@@ -107,19 +101,19 @@ function Landing() {
       </div>
 
       {/* bio  */}
-      <div className="border-l-2 border-black/10 dark:border-white/10 pl-4">
-        <p className="text-sm sm:text-base font-light text-black/70 dark:text-white/70 leading-relaxed">
+      <div className="border-l-2 border-base-content/10 pl-4">
+        <p className="text-sm sm:text-base font-light text-base-content/70 leading-relaxed">
           Web developer from{" "}
-          <TooltipProvider>
-            <Tooltip delayDuration={100}>
-              <TooltipTrigger className="font-medium text-black dark:text-white border-b border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60 transition-colors">
+          <span className="font-medium text-base-content border-b border-base-content/20 hover:border-base-content/60 transition-colors tooltip tooltip-top">
+            <span className="dropdown dropdown-hover dropdown-top dropdown-center cursor-pointer">
+              <div tabIndex={0} role="button" className="inline">
                 Phoenix, AZ
-              </TooltipTrigger>
-              <TooltipContent className="min-w-72 p-0 rounded-none border-none">
+              </div>
+              <div tabIndex={0} className="dropdown-content z-1 mt-2">
                 <WeatherWidget />
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>{" "}
+              </div>
+            </span>
+          </span>{" "}
           focused on creating full-stack web applications.
         </p>
       </div>

@@ -1,37 +1,39 @@
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
 import Links from "./Links";
 
 const Navbar = () => {
-  const [dark, setDark] = useState(() => {
-    const storedPreference = localStorage.getItem("darkMode");
-    return storedPreference === null ? true : JSON.parse(storedPreference);
+  const [theme, setTheme] = useState(() => {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") {
+      return stored;
+    }
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    return prefersDark ? "dark" : "light";
   });
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    // Update theme-color meta tag
     const themeColorMetaTag = document.querySelector(
       'meta[name="theme-color"]'
     );
-    if (dark) {
-      document.documentElement.classList.add("dark");
-      if (themeColorMetaTag) {
-        themeColorMetaTag.setAttribute("content", "#0a0a0a");
-      }
-    } else {
-      document.documentElement.classList.remove("dark");
-      if (themeColorMetaTag) {
-        themeColorMetaTag.setAttribute("content", "#ffffff");
-      }
+    if (themeColorMetaTag) {
+      themeColorMetaTag.setAttribute(
+        "content",
+        theme === "dark" ? "#0a0a0a" : "#ffffff"
+      );
     }
-  }, [dark]);
+  }, [theme]);
 
-  const darkModeHandler = () => {
-    setDark((prevDark) => {
-      const newDarkMode = !prevDark;
-      localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
-      return newDarkMode;
-    });
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const navItems = [
@@ -44,47 +46,45 @@ const Navbar = () => {
       <div className="flex items-center justify-between py-4 px-4">
         <Link
           to="/"
-          className="text-xl font-medium tracking-tight text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors"
+          className="text-xl font-medium tracking-tight text-base-content hover:text-base-content/60 transition-colors"
         >
           emnlc
         </Link>
-
         <div className="flex items-center gap-4">
           <Links navItems={navItems} />
-
           <button
-            onClick={darkModeHandler}
-            className="relative w-5 h-5"
-            aria-label="Toggle dark mode"
+            onClick={toggleTheme}
+            className="relative w-5 h-5 cursor-pointer"
+            aria-label="Toggle theme"
           >
-            <motion.img
+            <motion.div
               animate={{
-                opacity: dark ? 1 : 0,
-                rotate: dark ? 0 : 90,
-                scale: dark ? 1 : 0.8,
+                opacity: theme === "dark" ? 1 : 0,
+                rotate: theme === "dark" ? 0 : 90,
+                scale: theme === "dark" ? 1 : 0.8,
               }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full"
-              src="moon.svg"
-              alt="Dark Mode"
-            />
-            <motion.img
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <Moon className="w-5 h-5 text-base-content" />
+            </motion.div>
+            <motion.div
               animate={{
-                opacity: dark ? 0 : 1,
-                rotate: dark ? -90 : 0,
-                scale: dark ? 0.8 : 1,
+                opacity: theme === "dark" ? 0 : 1,
+                rotate: theme === "dark" ? -90 : 0,
+                scale: theme === "dark" ? 0.8 : 1,
               }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full"
-              src="sun.svg"
-              alt="Light Mode"
-            />
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <Sun className="w-5 h-5 text-base-content" />
+            </motion.div>
           </button>
         </div>
       </div>
       {/* Border line with padding */}
       <div className="px-4">
-        <div className="w-full h-px bg-black/10 dark:bg-white/10" />
+        <div className="w-full h-px bg-base-content/10" />
       </div>
     </div>
   );

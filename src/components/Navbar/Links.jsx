@@ -4,6 +4,10 @@ import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
 
+const projectNames = {
+  saveslot: "SaveSlot",
+};
+
 function Links({ navItems }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
@@ -11,6 +15,15 @@ function Links({ navItems }) {
   const getCurrentPage = () => {
     if (location.pathname === "/") return "Home";
     if (location.pathname === "/projects") return "Projects";
+
+    const projectMatch = location.pathname.match(/^\/projects\/([^/]+)\/?$/);
+    if (projectMatch) {
+      const slug = projectMatch[1];
+      if (projectNames[slug]) {
+        return projectNames[slug];
+      }
+    }
+
     return "Home";
   };
 
@@ -28,15 +41,16 @@ function Links({ navItems }) {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [dropdownOpen]);
 
-  const otherPages = navItems.filter((item) => item.name !== getCurrentPage());
+  const currentPage = getCurrentPage();
+  const otherPages = navItems.filter((item) => item.name !== currentPage);
 
   return (
     <div className="relative nav-dropdown">
       <button
         onClick={toggleDropdown}
-        className="flex items-center gap-1 text-sm font-light text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors border-b border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60"
+        className="flex items-center gap-1 text-sm font-light text-base-content hover:text-base-content/60 transition-colors border-b border-base-content/20 hover:border-base-content/60 cursor-pointer"
       >
-        {getCurrentPage()}
+        {currentPage}
         <motion.div
           animate={{ rotate: dropdownOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -44,7 +58,6 @@ function Links({ navItems }) {
           <ChevronDown size={16} />
         </motion.div>
       </button>
-
       {/* Dropdown menu */}
       <AnimatePresence>
         {dropdownOpen && (
@@ -53,7 +66,7 @@ function Links({ navItems }) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute top-full left-0 mt-2 overflow-hidden bg-white dark:bg-dark-primary w-full min-w-full"
+            className="absolute top-full left-0 mt-2 overflow-hidden bg-base-100 w-full min-w-full"
           >
             {otherPages.map((item, index) => (
               <motion.div
@@ -69,7 +82,7 @@ function Links({ navItems }) {
               >
                 <Link
                   to={item.path}
-                  className="block py-1 text-sm font-light text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors border-b border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60 whitespace-nowrap"
+                  className="block py-1 text-sm font-light text-base-content hover:text-base-content/60 transition-colors border-b border-base-content/20 hover:border-base-content/60 whitespace-nowrap"
                   onClick={() => setDropdownOpen(false)}
                 >
                   {item.name}

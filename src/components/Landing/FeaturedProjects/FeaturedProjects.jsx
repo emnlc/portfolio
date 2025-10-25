@@ -16,12 +16,12 @@ function FeaturedProjects() {
     <div className="px-4 flex flex-col gap-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-medium text-black dark:text-white tracking-tight">
+        <h2 className="text-lg font-medium text-base-content tracking-tight">
           Featured Projects
         </h2>
         <Link
           to="/projects"
-          className="text-sm font-light text-black dark:text-white hover:text-black/60 dark:hover:text-white/60 transition-colors flex items-center gap-1 border-b border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60"
+          className="text-sm font-light text-base-content hover:text-base-content/60 transition-colors flex items-center gap-1 border-b border-base-content/20 hover:border-base-content/60"
         >
           View all
           <ArrowUpRight size={14} />

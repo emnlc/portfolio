@@ -32,16 +32,16 @@ function SkillCategory({ category, skills, categoryIndex }) {
     >
       {/* label */}
       <div className="flex items-center gap-3">
-        <span className="text-xs text-black/50 dark:text-white/50 font-light uppercase tracking-wider">
+        <span className="text-xs text-base-content/50 font-light uppercase tracking-wider">
           {category}
         </span>
-        <div className="flex-1 h-px bg-black/10 dark:bg-white/10" />
+        <div className="flex-1 h-px bg-base-content/10" />
 
         {/* Show more button */}
         {shouldShowMoreButton(skills) && (
           <button
             onClick={toggleExpand}
-            className="text-xs text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 font-light"
+            className="text-xs text-base-content/50 hover:text-base-content transition-colors flex items-center gap-1 font-light cursor-pointer"
           >
             <span>
               {isExpanded

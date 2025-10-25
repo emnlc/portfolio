@@ -34,7 +34,7 @@ function Skills() {
     >
       {/* Header */}
       <div className="flex items-center justify-start">
-        <h2 className="text-lg font-medium text-black dark:text-white tracking-tight">
+        <h2 className="text-lg font-medium text-base-content tracking-tight">
           Skills
         </h2>
       </div>

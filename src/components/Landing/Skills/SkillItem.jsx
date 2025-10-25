@@ -61,15 +61,15 @@ function SkillItem({ skill, index, isInitiallyVisible = true }) {
       onClick={handleClick}
       className="relative"
     >
-      <div className="border border-black/20 dark:border-white/20 bg-white dark:bg-dark-primary transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.02] cursor-pointer w-full overflow-hidden">
-        <div className="relative px-3 py-2 min-h-[44px] flex items-center justify-center">
+      <div className="border border-base-content/20 bg-base-100 transition-colors hover:bg-base-content/2 cursor-pointer w-full overflow-hidden">
+        <div className="relative px-3 py-2 min-h-11 flex items-center justify-center">
           {/* name */}
           <motion.div
             animate={{ opacity: showIcon ? 0 : 1 }}
             transition={{ duration: 0.2 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <span className="text-sm font-light text-black dark:text-white">
+            <span className="text-sm font-light text-base-content">
               {skill}
             </span>
           </motion.div>
@@ -84,8 +84,8 @@ function SkillItem({ skill, index, isInitiallyVisible = true }) {
               <img
                 src={`/skills/${iconFile(skill)}.svg`}
                 className={`max-w-full max-h-full object-contain ${
-                  darkInvert(skill) ? "dark:invert" : ""
-                } ${lightInvert(skill) ? "invert dark:invert-0" : ""}`}
+                  darkInvert(skill) ? "[html[data-theme='dark']_&]:invert" : ""
+                } ${lightInvert(skill) ? "invert [html[data-theme='dark']_&]:invert-0" : ""}`}
                 alt={skill}
               />
             </div>

@@ -2,9 +2,13 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import StarField from "@/components/Starfield";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
+import NotFound from "@/components/NotFound";
 
 export const Route = createRootRoute({
   component: RootComponent,
+  notFoundComponent: () => {
+    <NotFound />;
+  },
 });
 
 function RootComponent() {
