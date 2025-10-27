@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
-function FeaturedCard({ project, index }) {
+function FeaturedCard({ project }) {
   const [isColored, setIsColored] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -60,12 +59,7 @@ function FeaturedCard({ project, index }) {
   const showColor = isHovered || isColored;
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="border border-base-content/20 bg-base-100 p-6 flex flex-col gap-4"
-    >
+    <article className="border border-base-content/20 bg-base-100 p-6 flex flex-col gap-4">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <h3 className="text-lg font-medium text-base-content tracking-tight mb-2">
@@ -86,7 +80,6 @@ function FeaturedCard({ project, index }) {
             ))}
           </div>
         </div>
-        {/* number */}
         <span className="text-base-content/40 text-xs font-light">
           {String(project.id).padStart(2, "0")}
         </span>
@@ -94,14 +87,14 @@ function FeaturedCard({ project, index }) {
 
       {project.img && (
         <div
-          className="w-full cursor-pointer relative  overflow-hidden h-48"
+          className="w-full cursor-pointer relative border border-base-content/20 overflow-hidden h-48"
           onClick={handleImageClick}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {typeof project.img === "object" && project.img !== null ? (
             <>
-              {/* Dark image */}
+              {/* dark */}
               <img
                 src={project.img.dark}
                 alt={project.title}
@@ -110,7 +103,7 @@ function FeaturedCard({ project, index }) {
                 } ${isDark ? "opacity-100" : "opacity-0"}`}
                 style={{ transition: "filter 500ms, opacity 0ms" }}
               />
-              {/* Light image */}
+              {/* light */}
               <img
                 src={project.img.light}
                 alt={project.title}
@@ -121,7 +114,6 @@ function FeaturedCard({ project, index }) {
               />
             </>
           ) : (
-            /* Single image fallback */
             <img
               src={project.img}
               alt={project.title}
@@ -171,7 +163,6 @@ function FeaturedCard({ project, index }) {
             )}
           </div>
 
-          {/* Right side - View Details */}
           {project.detailed && (
             <Link
               to={`/projects/${project.slug}`}
@@ -184,7 +175,7 @@ function FeaturedCard({ project, index }) {
           )}
         </div>
       )}
-    </motion.article>
+    </article>
   );
 }
 

@@ -3,23 +3,23 @@ import { useEffect, useRef, useState } from "react";
 const StarField = () => {
   const canvasRef = useRef(null);
   const numStars = 75;
-
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const rootElement = document.documentElement;
 
     const updateThemeState = () => {
-      setIsDarkMode(rootElement.classList.contains("dark"));
+      const theme = rootElement.getAttribute("data-theme");
+      setIsDarkMode(theme === "dark");
     };
 
     updateThemeState();
 
+    // theme changes
     const observer = new MutationObserver(updateThemeState);
-
     observer.observe(rootElement, {
       attributes: true,
-      attributeFilter: ["class"],
+      attributeFilter: ["data-theme"],
     });
 
     return () => {
@@ -30,7 +30,6 @@ const StarField = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-
     let stars = [];
     let targetMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     let currentMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };

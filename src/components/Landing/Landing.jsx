@@ -32,7 +32,7 @@ function Landing() {
       <div className="flex gap-6 items-start">
         {/* Picture */}
         <img
-          src="portfolio.jpg"
+          src="portfolio.avif"
           className="w-20 sm:w-28 h-20 sm:h-28 rounded-full object-cover border border-base-content/20 shrink-0"
           alt="Emmanuel"
         />
@@ -114,7 +114,7 @@ function Landing() {
               </div>
             </span>
           </span>{" "}
-          focused on creating full-stack web applications.
+          focused on creating full stack web apps.
         </p>
       </div>
     </motion.div>

@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "SaveSlot",
+    "slug": "saveslot",
     "techstack": [
       "React.js",
       "TypeScript",
@@ -14,13 +15,63 @@
     "description": [
       "Gaming social platform for rating, reviewing, and discovering games."
     ],
-    "img": "saveslot/saveslot.png",
+    "detailed": {
+      "overview": "A social platform for discovering, tracking, and reviewing video games. Built as a full stack demonstration using React, TypeScript, Bun, Hono, and Supabase, with a focus on a simple UI and easy game discoverability.",
+
+      "motivation": "Built to explore modern full stack architecture with Bun, Hono, and Supabase. Wanted to implement features like automated scheduling, smart caching, and IGDB API integration while creating something cleaner and more focused than existing game trackers.",
+
+      "features": [
+        "Game discovery powered by IGDB API with dedicated pages for new and upcoming releases",
+        "Personal library management for owned, wishlisted, and completed games",
+        "Community reviews and ratings with user profiles and activity feeds",
+        "Automated daily scheduling to refresh game database",
+        "Smart data caching that updates stale entries from IGDB on demand",
+        "Responsive design built with DaisyUI"
+      ],
+
+      "colors": {
+        "dark": ["#18181b", "#ffffff", "#c50035", "#ff9fa0", "#b9f14e"],
+        "light": ["#f8f8f8", "#030303", "#de394b", "#ff9fa0", "#7acc00"]
+      },
+      "images": [
+        {
+          "dark": "/saveslot/saveslot.avif",
+          "light": "/saveslot/light-saveslot.avif"
+        },
+        {
+          "dark": "/saveslot/saveslot-2.avif",
+          "light": "/saveslot/light-saveslot-2.avif"
+        },
+        {
+          "dark": "/saveslot/saveslot-3.avif",
+          "light": "/saveslot/light-saveslot-3.avif"
+        },
+        {
+          "dark": "/saveslot/saveslot-4.avif",
+          "light": "/saveslot/light-saveslot-4.avif"
+        },
+        {
+          "dark": "/saveslot/saveslot-5.avif",
+          "light": "/saveslot/light-saveslot-5.avif"
+        },
+        {
+          "dark": "/saveslot/saveslot-6.avif",
+          "light": "/saveslot/light-saveslot-6.avif"
+        }
+      ]
+    },
+    "img": {
+      "dark": "saveslot/saveslot.avif",
+      "light": "saveslot/light-saveslot.avif"
+    },
     "site": "https://saveslot.app/",
     "source": "https://github.com/emnlc/saveslot"
   },
+
   {
     "id": 2,
     "title": "Baller Props",
+    "slug": "baller-props",
     "techstack": [
       "React.js",
       "TypeScript",
@@ -32,30 +83,36 @@
     "description": [
       "Sports data research tool using prop lines from online sportsbooks."
     ],
-    "img": "ballerprops/ballerprops.png",
+    "detailed": {
+      "overview": "A sports betting research tool for NBA and WNBA prop lines. Aggregates data from multiple sportsbooks and provides statistical analysis to streamline research that would otherwise require lots of browser tabs.",
+
+      "motivation": "Researching sports props required manually comparing data across multiple sportsbooks and ESPN, leading to a ton of open tabs and no way to track stats efficiently. Existing tools were overpriced for occasional betting, so I built a streamlined alternative focused on data aggregation and easy comparison.",
+
+      "features": [
+        "Scrapes prop lines from PrizePicks, Underdog, and DraftKings",
+        "Sortable and filterable tables for quick prop discovery",
+        "Statistical analysis including L10 averages, hit rate percentages, and head to head data",
+        "Compare odds across sportsbooks to find the best lines",
+        "Historical season data dating back to 2023",
+        "Custom backend using FastAPI and a forked nba_api library for extended data coverage"
+      ],
+      "colors": ["#0A0B0B", "#FFFEFE", "#0385C7", "#359861", "#982526"],
+      "images": [
+        "/ballerprops/baller-props.avif",
+        "/ballerprops/baller-props-2.avif",
+        "/ballerprops/baller-props-3.avif",
+        "/ballerprops/baller-props-4.avif",
+        "/ballerprops/baller-props-5.avif"
+      ]
+    },
+    "img": "ballerprops/baller-props.avif",
     "site": "https://ballerprops.com/",
     "source": "https://github.com/emnlc/baller-props"
   },
+
   {
     "id": 3,
-    "title": "Coin Expo",
-    "techstack": [
-      "React.js",
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "Supabase",
-      "Tailwind CSS"
-    ],
-    "description": [
-      "List and track top-ranking cryptocurrencies, real-time price updates, and statistical data."
-    ],
-    "img": "coinexpo/coinexpo.png",
-    "site": "https://coinexpo.vercel.app/",
-    "source": "https://github.com/emnlc/coin-expo"
-  },
-  {
-    "id": 4,
+    "slug": "yard-ledger",
     "title": "Yard Ledger",
     "techstack": [
       "React.js",
@@ -65,12 +122,115 @@
       "Tailwind CSS"
     ],
     "description": [
-      "Invoice processing and generation with user authentication and real-time database synchronization."
+      "Invoice processing and generation with user authentication and real time database synchronization."
     ],
-    "img": "yardledger/yardledger.png",
+
+    "detailed": {
+      "overview": "An invoice management system built for my dad's landscaping business. Streamlines client and invoice tracking with PDF generation, dramatically improving our monthly invoicing workflow.",
+
+      "motivation": "Built to address a real workflow issue in my dad's landscaping business. Monthly invoicing relied on handwritten notes from his notebook, making the process slow and prone to missing details. This app lets him log work as it happens, simplifying our invoice review process.",
+
+      "features": [
+        "Client management with invoice history tracking",
+        "Real time database synchronization using Firebase",
+        "Create and edit invoice line items with automatic price calculations",
+        "PDF generation with react-pdf/renderer for professional invoice documents",
+        "Simple, accessible interface designed for nontechnical users",
+        "Persistent records of all past invoices and pricing data"
+      ],
+
+      "colors": {
+        "dark": ["#0F1210", "#ffffff", "#22B35E", "#3A83F6"],
+        "light": ["#ffffff", "#09090B", "#22B35E", "#3A83F6"]
+      },
+      "images": [
+        {
+          "dark": "/yardledger/yardledger.avif",
+          "light": "/yardledger/light-yardledger.avif"
+        },
+        {
+          "dark": "/yardledger/yardledger-2.avif",
+          "light": "/yardledger/light-yardledger-2.avif"
+        },
+        {
+          "dark": "/yardledger/yardledger-3.avif",
+          "light": "/yardledger/light-yardledger-3.avif"
+        },
+        {
+          "dark": "/yardledger/yardledger-4.avif",
+          "light": "/yardledger/light-yardledger-4.avif"
+        }
+      ]
+    },
+
+    "img": {
+      "dark": "yardledger/yardledger.avif",
+      "light": "yardledger/light-yardledger.avif"
+    },
     "site": "https://yardledger.web.app",
     "source": "https://github.com/emnlc/yard-ledger"
   },
+
+  {
+    "id": 4,
+    "title": "Coin Expo",
+    "slug": "coin-expo",
+    "techstack": [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Supabase",
+      "Tailwind CSS"
+    ],
+    "description": [
+      "List and track top ranking cryptocurrencies, real time price updates, and statistical data."
+    ],
+    "detailed": {
+      "overview": "A cryptocurrency tracking platform displaying real time prices, market statistics, and historical data for top ranking coins. Built as a learning project to get comfortable with React development while exploring my interest in crypto trading.",
+
+      "motivation": "This was one of my first solo React projects. I wanted to continue learning web development fundamentals while building something practical. Focused on creating a clean interface to check crypto prices without the clutter of larger platforms.",
+
+      "features": [
+        "Real time cryptocurrency listings with market cap and volume data",
+        "30 day price charts with daily tooltips for historical analysis",
+        "Global market metrics including Bitcoin and Ethereum dominance statistics",
+        "Personal watchlist functionality for registered users",
+        "Fuzzy matching logic to ensure accurate coin identification across APIs",
+        "Data aggregation from CoinMarketCap and CoinGecko APIs"
+      ],
+
+      "colors": {
+        "dark": ["#272627", "#FFFFFF", "#0CB788", "#0ADB51", "#EE4445"],
+        "light": ["#FFFFFF", "#000101", "#0CB788", "#0ADB51", "#EE4445"]
+      },
+      "images": [
+        {
+          "dark": "/coinexpo/coin-expo.avif",
+          "light": "/coinexpo/light-coin-expo.avif"
+        },
+        {
+          "dark": "/coinexpo/coin-expo-2.avif",
+          "light": "/coinexpo/light-coin-expo-2.avif"
+        },
+        {
+          "dark": "/coinexpo/coin-expo-3.avif",
+          "light": "/coinexpo/light-coin-expo-3.avif"
+        },
+        {
+          "dark": "/coinexpo/coin-expo-4.avif",
+          "light": "/coinexpo/light-coin-expo-4.avif"
+        }
+      ]
+    },
+    "img": {
+      "dark": "coinexpo/coin-expo.avif",
+      "light": "coinexpo/light-coin-expo.avif"
+    },
+    "site": "https://coinexpo.vercel.app/",
+    "source": "https://github.com/emnlc/coin-expo"
+  },
+
   {
     "id": 5,
     "title": "Portfolio",
@@ -79,6 +239,7 @@
     "site": "https://emnlc.com",
     "source": "https://github.com/emnlc/portfolio"
   },
+
   {
     "id": 6,
     "title": "Ramen Games",

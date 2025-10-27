@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 
 const projectNames = {
   saveslot: "SaveSlot",
+  "baller-props": "Baller Props",
+  "yard-ledger": "Yard Ledger",
+  "coin-expo": "Coin Expo",
 };
 
 function Links({ navItems }) {
