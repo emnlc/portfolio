@@ -237,7 +237,7 @@
 
   {
     "id": 6,
-    "title": "Ramen Games",
+    "title": "Game Server Discord Bot",
     "techstack": ["Python", "Docker"],
     "description": ["Discord bot to manage game servers onto my home server."],
     "source": "https://github.com/emnlc/game-server-bot"
