@@ -1,8 +1,8 @@
 {
   "Frontend": [
-    "React.js",
+    "React",
     "TypeScript",
-    "Tailwind CSS",
+    "Tailwind",
     "daisyUI",
     "shadcn/ui",
     "Motion",
@@ -15,14 +15,16 @@
   "Database": ["Supabase", "Firebase", "PostgreSQL"],
   "Tools & Others": [
     "Git",
-    "GitHub",
     "Docker",
+    "Railway",
+    "DigitalOcean",
     "Figma",
+    "Vite",
+    "GitHub",
     "Bash",
     "Postman",
-    "Vite",
-    "VS Code",
+    "Cloudflare",
     "Vercel",
-    "Cloudflare"
+    "VS Code"
   ]
 }

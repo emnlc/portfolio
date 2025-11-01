@@ -21,7 +21,7 @@ function SkillItem({ skill, index, isInitiallyVisible = true }) {
   };
 
   const lightInvert = (skillName) => {
-    const invertList = ["Express", "Vercel", "GitHub"];
+    const invertList = ["Express", "Vercel", "GitHub", "Railway"];
     return invertList.includes(skillName);
   };
 

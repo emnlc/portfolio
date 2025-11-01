@@ -4,13 +4,13 @@
     "title": "SaveSlot",
     "slug": "saveslot",
     "techstack": [
-      "React.js",
+      "React",
       "TypeScript",
       "Bun",
       "Hono",
-      "Tailwind CSS",
-      "daisyUI",
-      "Supabase"
+      "Tailwind",
+      "Supabase",
+      "Docker"
     ],
     "description": [
       "Gaming social platform for rating, reviewing, and discovering games."
@@ -73,12 +73,13 @@
     "title": "Baller Props",
     "slug": "baller-props",
     "techstack": [
-      "React.js",
+      "React",
       "TypeScript",
-      "Tailwind CSS",
+      "Tailwind",
       "Supabase",
       "Python",
-      "FastAPI"
+      "FastAPI",
+      "Docker"
     ],
     "description": [
       "Sports data research tool using prop lines from online sportsbooks."
@@ -114,13 +115,7 @@
     "id": 3,
     "slug": "yard-ledger",
     "title": "Yard Ledger",
-    "techstack": [
-      "React.js",
-      "TypeScript",
-      "Node.js",
-      "Firebase",
-      "Tailwind CSS"
-    ],
+    "techstack": ["React", "TypeScript", "Node.js", "Firebase", "Tailwind"],
     "description": [
       "Invoice processing and generation with user authentication and real time database synchronization."
     ],
@@ -176,12 +171,12 @@
     "title": "Coin Expo",
     "slug": "coin-expo",
     "techstack": [
-      "React.js",
+      "React",
       "TypeScript",
       "Node.js",
       "Express",
       "Supabase",
-      "Tailwind CSS"
+      "Tailwind"
     ],
     "description": [
       "List and track top ranking cryptocurrencies, real time price updates, and statistical data."
@@ -234,7 +229,7 @@
   {
     "id": 5,
     "title": "Portfolio",
-    "techstack": ["React.js", "JavaScript", "Node.js", "Tailwind CSS"],
+    "techstack": ["React", "JavaScript", "Node.js", "Tailwind"],
     "description": ["You're on it right now :)"],
     "site": "https://emnlc.com",
     "source": "https://github.com/emnlc/portfolio"
@@ -245,6 +240,6 @@
     "title": "Ramen Games",
     "techstack": ["Python", "Docker"],
     "description": ["Discord bot to manage game servers onto my home server."],
-    "source": "https://github.com/emnlc/ramen-games"
+    "source": "https://github.com/emnlc/game-server-bot"
   }
 ]
